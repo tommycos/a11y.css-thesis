@@ -1,0 +1,270 @@
+/* ==================== */
+/* == colors & layout
+/* ==================== */
+body {
+	background-color: #f7f7f7;
+	background-image:
+		radial-gradient(#0000001a 15%, transparent 16%),
+		radial-gradient(#0000001a 15%, transparent 16%);
+	background-position: 0 0, .25rem .25rem;
+	background-size: .5rem .5rem;
+	box-sizing: border-box;
+	color: #3e4b55;
+	font-family: system-ui, sans-serif;
+	font-size: 75%;
+	margin: 0;
+	min-inline-size: 25em;
+	padding: 0;
+	inline-size: 24rem;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
+}
+
+#home {
+	background: #fcf9e9;
+	border: 1px solid #e5dec8;
+	border-radius: .25rem;
+	margin: .625rem;
+}
+
+h1 {
+	margin: 0;
+	padding: .5em .5em 0;
+}
+
+h2 {
+	display: flex;
+	margin-inline: -1rem;
+	margin-block: 0 1rem;
+}
+
+h2::after,
+h2::before {
+	background-color: #e5dec8;
+	background-image:
+		radial-gradient(#0000001a 15%, transparent 16%),
+		radial-gradient(#0000001a 15%, transparent 16%);
+	background-position: 0 0, .25rem .25rem;
+	background-size: .5rem .5rem;
+	content: "";
+	flex: 1;
+	margin-inline: .5rem 0;
+}
+
+h2::before {
+	flex: 0 1 1rem;
+	margin-inline: 0 .5rem;
+}
+
+code {
+	border: 1px solid;
+	border-radius: 4px;
+	display: inline-block;
+	font-family: inherit;
+	padding: .125rem;
+}
+
+hr {
+	visibility: hidden;
+}
+
+.hidden {
+	display: none;
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+legend {
+	padding: 0;
+	inline-size: 100%;
+}
+
+/* ==================== */
+/* == Buttons
+/* ==================== */
+button {
+	background-color: rebeccapurple;
+	background-image: linear-gradient(#ffffff1a, #0000001a);
+	border: 1px solid transparent;
+	border-radius: 0;
+	box-shadow: inset 0 1px #fff3, 0 .25em 0 -.1em #0003;
+	color: #fff;
+	margin: .5rem 0;
+	outline: 1px solid #0003;
+	outline-offset: -1px;
+	text-shadow: .05em .05em #0003;
+	transition: all 300ms;
+}
+
+button::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+button:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+button:hover,
+button:focus {
+	background-color: #528;
+	box-shadow: inset 0 1px #fff3, 0 .25em 0 -.1em #0000004d;
+}
+
+button:active {
+	box-shadow: inset 0 1px #0003;
+	transform: translate3d(.1em, .1em, 0);
+}
+
+.m-1 {
+	margin: 1rem;
+}
+
+.button-group {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-block-start: .5rem;
+	margin-inline-start: .5rem;
+	padding-block-start: .5rem;
+}
+
+.button-group + .button-group {
+	border-top: 1px solid #e5dec8;
+}
+
+.input-group + .button-group {
+	margin: 0;
+	padding: 0;
+}
+
+.button-group span {
+	flex: 0 1 50%;
+	font-weight: 700;
+}
+
+/* ==================== */
+/* == Switch
+/* ==================== */
+[role="switch"] {
+	border: 0;
+	border-radius: 1rem;
+	box-sizing: content-box;
+	block-size: 2rem;
+	cursor: pointer;
+	font: inherit;
+	inline-size: 4rem;
+	line-height: 2rem;
+	outline-color: transparent;
+	margin-inline-start: auto;
+	padding-inline: 2rem;
+	position: relative;
+	transition: all .3s cubic-bezier(0, .5, .5, 1);
+}
+
+[role="switch"]:active,
+[role="switch"]:focus {
+	outline-color: transparent;
+}
+
+[role="switch"]::before {
+	background: #fff;
+	border-radius: 50%;
+	block-size: 1.5rem;
+	content: "";
+	inline-size: 1.5rem;
+	inset: .25rem auto auto .25rem;
+	position: absolute;
+	transform: none;
+	transition: transform .3s cubic-bezier(0, .5, .5, 1) 0s;
+	will-change: transform;
+}
+
+[role="switch"][aria-disabled="true"] {
+	background-color: #666;
+	cursor: not-allowed;
+}
+
+[role="switch"][aria-checked="true"] {
+	background-color: #008000;
+}
+
+[role="switch"][aria-checked="true"]::before {
+	transform: translateX(6rem);
+}
+
+[role="switch"][aria-checked="true"]:hover,
+[role="switch"][aria-checked="true"]:focus {
+	background-color: #007000;
+}
+
+[role="switch"] > :first-child,
+[role="switch"][aria-checked="true"] > :last-child {
+	display: none;
+}
+
+[role="switch"][aria-checked="true"] > :first-child {
+	display: block;
+}
+
+label {
+	cursor: pointer;
+	display: flex;
+	padding: .25rem;
+	padding-inline-start: 1.25rem;
+}
+
+input + label {
+	transform: translateX(-.625rem);
+}
+
+input + label::before {
+	background: currentcolor;
+	border-radius: 50%;
+	block-size: 1em;
+	content: "";
+	color: inherit;
+	display: inline-block;
+	font-weight: bold;
+	inline-size: 1em;
+	line-height: 1;
+	margin-inline-end: .5em;
+	text-align: center;
+}
+
+input:disabled + label {
+	color: gray;
+}
+
+input:checked + label {
+	color: rebeccapurple;
+}
+
+input:checked + label::before {
+	background-color: rebeccapurple;
+	color: white;
+	content: "•";
+}
+
+/* ==================== */
+/* == .visually-hidden
+/* ==================== */
+.visually-hidden {
+	border: 0;
+	block-size: 1px;
+	clip-path: inset(50%);
+	inline-size: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+}

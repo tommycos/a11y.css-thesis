@@ -1,0 +1,105 @@
+{
+	"title": "Web Extension for a11y.css",
+	"name": "a11ycss-webextension",
+	"description": "Chromium and Firefox web extension for a11y.css",
+	"version": "2.0.1",
+	"author": {
+		"name": "Gaël Poupard",
+		"url": "https://www.ffoodd.fr",
+		"email": "gael+npm@ffoodd.fr"
+	},
+	"homepage": "https://ffoodd.github.io/a11y.css/",
+	"keywords": [
+		"a11y",
+		"accessibility",
+		"accessibility-checker",
+		"testing",
+		"css",
+		"webextension",
+		"firefox",
+		"chromium",
+		"chrome"
+	],
+	"scripts": {
+		"start": "concurrently --kill-others \"npm:watch:*\"",
+		"preversion": "shx rm -rf *.zip && npm t",
+		"version": "json -I -f manifest-firefox.json -e \"this.version='$npm_package_version'\" && json -I -f manifest-chrome.json -e \"this.version='$npm_package_version'\" && npm run build && git add .",
+		"test": "concurrently \"npm:lint:*\"",
+		"lint:styles": "stylelint \"./sass/**/*.scss\"",
+		"lint:ext": "cross-env-shell web-ext lint -s $npm_package_name-$npm_package_version-firefox.zip",
+		"build:css": "sass sass/:css/ -s compressed --load-path=node_modules --no-error-css",
+		"postbuild:css": "postcss css/{lang,outline,spacing}.css -r -m -u autoprefixer cssnano",
+		"watch:css": "sass sass/:css/ -s compressed --load-path=node_modules --source-map --no-error-css -w",
+		"prebuild": "npm run build:css",
+		"build": "shx cp -r node_modules/a11y.css/css/a11y-{ar,el,en,es,fr,pl,pt-br,ru,zh}.{css,css.map} node_modules/a11y.css/css/a11y-{ar,el,en,es,fr,pl,pt-br,ru,zh}_{error,obsolete,warning}.{css,css.map} ./css",
+		"postbuild": "npm run build:firefox && npm run build:chrome",
+		"prebuild:firefox": "shx cp manifest-firefox.json manifest.json",
+		"build:firefox": "cross-env-shell web-ext build -n $npm_package_name-$npm_package_version-firefox.zip",
+		"load:firefox": "web-ext run -t firefox-desktop --browser-console",
+		"prebuild:chrome": "shx cp manifest-chrome.json manifest.json",
+		"build:chrome": "cross-env-shell web-ext build -n $npm_package_name-$npm_package_version-chrome.zip",
+		"load:chrome": "web-ext run -t chromium --devtools"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ffoodd/a11y.css-webextension"
+	},
+	"bugs": {
+		"url": "https://github.com/ffoodd/a11y.css-webextension/issues"
+	},
+	"browserslist": [
+		"last 1 versions"
+	],
+	"dependencies": {
+		"a11y.css": "^5.2.1"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.19",
+		"concurrently": "^8.2.2",
+		"cross-env": "^7.0.3",
+		"cssnano": "^6.1.2",
+		"json": "^11.0.0",
+		"postcss": "^8.4.38",
+		"postcss-cli": "^11.0.0",
+		"sass": "^1.75.0",
+		"shx": "^0.3.4",
+		"stylelint": "^15.11.0",
+		"stylelint-config-recommended": "^13.0.0",
+		"stylelint-config-standard-scss": "^11.1.0",
+		"stylelint-stylistic": "^0.4.5",
+		"web-ext": "^7.11.0"
+	},
+	"webExt": {
+		"artifactsDir": "./",
+		"ignoreFiles": [
+			"package.json",
+			"package-lock.json",
+			"manifest-*.json",
+			"sass",
+			"temp"
+		],
+		"build": {
+			"overwriteDest": true
+		},
+		"run": {
+			"devtools": true,
+			"startUrl": [
+				"https://ffoodd.github.io/a11y.css/"
+			]
+		}
+	},
+	"stylelint": {
+		"extends": [
+			"stylelint-config-standard-scss",
+			"stylelint-stylistic/config"
+		],
+		"rules": {
+			"stylistic/indentation": "tab",
+			"stylistic/string-quotes": null,
+			"stylistic/number-leading-zero": null,
+			"at-rule-empty-line-before": null,
+			"color-function-notation": null
+		}
+	}
+}

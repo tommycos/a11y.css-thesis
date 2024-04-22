@@ -1,0 +1,71 @@
+{
+	"a11ycssBtnApply": {
+		"message": "Εμφάνιση"
+	},
+	"a11ycssBtnClear": {
+		"message": "Εκκαθάριση"
+	},
+	"a11ycssLevel_all": {
+		"message": "Όλα"
+	},
+	"a11ycssLevel_obsolete": {
+		"message": "Παρωχημένα, Προειδοποιήσεις, και Σφάλματα"
+	},
+	"a11ycssLevel_warning": {
+		"message": "Προειδοποιήσεις και Σφάλματα"
+	},
+	"a11ycssLevel_error": {
+		"message": "Μόνο Σφάλματα"
+	},
+	"a11ycssMinimumNoticeLevel": {
+		"message": "Ελάχιστο Επίπεδο Αναφοράς"
+	},
+	"altEmpty": {
+		"message": "κενή"
+	},
+	"altMissing": {
+		"message": "λείπει"
+	},
+	"localizeOn": {
+		"message": "Ενεργοποιημένη"
+	},
+	"localizeOff": {
+		"message": "Ανενεργή"
+	},
+	"btn_a11y_label": {
+		"message": "Εμφάνιση a11y.css"
+	},
+	"btn_alt_label": {
+		"message": "Εμφάνιση εναλλακτικών <code>img</code>"
+	},
+	"btn_spacing_label": {
+		"message": "Αύξηση απόστασης κειμένου"
+	},
+	"btn_outline_label": {
+		"message": "Έμφαση Περιγράμματος"
+	},
+	"btn_lang_label": {
+		"message": "Εμφάνιση χρησιμοποιούμενων γλωσσών"
+	},
+	"h1Allycss": {
+		"message": "a11y.css"
+	},
+	"h1Allycss2": {
+		"message": "a11y.css: ρυθμίσεις"
+	},
+	"h1Others": {
+		"message": "Άλλα εργαλεία"
+	},
+	"scrollToImage": {
+		"message": "Μετακινηθείτε στην εικόνα"
+	},
+	"checkAltsHeading": {
+		"message": "$NUMBER$ εικόνες",
+		"placeholders": {
+			"number": {
+				"content": "$1",
+				"example": "6"
+			}
+		}
+	}
+}

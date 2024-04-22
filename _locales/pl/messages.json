@@ -1,0 +1,71 @@
+{
+	"a11ycssBtnApply": {
+		"message": "Pokaż"
+	},
+	"a11ycssBtnClear": {
+		"message": "Wyczyść"
+	},
+	"a11ycssLevel_all": {
+		"message": "Wszystko"
+	},
+	"a11ycssLevel_obsolete": {
+		"message": "Przestarzałe, ostrzeżenia i błędy"
+	},
+	"a11ycssLevel_warning": {
+		"message": "Ostrzeżenia i błędy"
+	},
+	"a11ycssLevel_error": {
+		"message": "Tylko błędy"
+	},
+	"a11ycssMinimumNoticeLevel": {
+		"message": "Minimalny poziom alertów"
+	},
+	"altEmpty": {
+		"message": "pusty"
+	},
+	"altMissing": {
+		"message": "brak"
+	},
+	"localizeOn": {
+		"message": "Wł."
+	},
+	"localizeOff": {
+		"message": "Wył."
+	},
+	"btn_a11y_label": {
+		"message": "Pokaż a11y.css"
+	},
+	"btn_alt_label": {
+		"message": "Pokaż alternatywy <code>img</code>"
+	},
+	"btn_spacing_label": {
+		"message": "Zwiększ odstępy w tekście"
+	},
+	"btn_outline_label": {
+		"message": "Wskaźnik fokusu"
+	},
+	"btn_lang_label": {
+		"message": "Pokaż użyte języki"
+	},
+	"h1Allycss": {
+		"message": "a11y.css"
+	},
+	"h1Allycss2": {
+		"message": "a11y.css: ustawienia"
+	},
+	"h1Others": {
+		"message": "Inne narzędzia"
+	},
+	"scrollToImage": {
+		"message": "Przewiń do obrazu"
+	},
+	"checkAltsHeading": {
+		"message": "$NUMBER$ obrazów",
+		"placeholders": {
+			"number": {
+				"content": "$1",
+				"example": "6"
+			}
+		}
+	}
+}

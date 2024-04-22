@@ -1,0 +1,71 @@
+{
+	"a11ycssBtnApply": {
+		"message": "Afficher"
+	},
+	"a11ycssBtnClear": {
+		"message": "Masquer"
+	},
+	"a11ycssLevel_all": {
+		"message": "Tout"
+	},
+	"a11ycssLevel_obsolete": {
+		"message": "Éléments obsolètes, Alertes et Erreurs"
+	},
+	"a11ycssLevel_warning": {
+		"message": "Alertes et Erreurs"
+	},
+	"a11ycssLevel_error": {
+		"message": "Erreurs seulement"
+	},
+	"a11ycssMinimumNoticeLevel": {
+		"message": "Niveau minimum"
+	},
+	"altEmpty": {
+		"message": "vide"
+	},
+	"altMissing": {
+		"message": "manquant"
+	},
+	"localizeOn": {
+		"message": "Activé"
+	},
+	"localizeOff": {
+		"message": "Désactivé"
+	},
+	"btn_a11y_label": {
+		"message": "Afficher a11y.css"
+	},
+	"btn_alt_label": {
+		"message": "Afficher les alternatives aux <code>img</code>"
+	},
+	"btn_spacing_label": {
+		"message": "Augmenter les espacements du texte"
+	},
+	"btn_outline_label": {
+		"message": "Encadrer le focus"
+	},
+	"btn_lang_label": {
+		"message": "Afficher les langues"
+	},
+	"h1Allycss": {
+		"message": "a11y.css"
+	},
+	"h1Allycss2": {
+		"message": "a11y.css : réglages"
+	},
+	"h1Others": {
+		"message": "Autres outils"
+	},
+	"scrollToImage": {
+		"message": "Défiler vers l’image"
+	},
+	"checkAltsHeading": {
+		"message": "$number$ images",
+		"placeholders": {
+			"number": {
+				"content": "$1",
+				"example": "6"
+			}
+		}
+	}
+}
