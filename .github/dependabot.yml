@@ -3,20 +3,20 @@ updates:
     - package-ecosystem: "github-actions"
       directory: "/"
       schedule:
-          interval: weekly
+          interval: monthly
           day: monday
           time: "12:00"
-          timezone: Europe/Paris
+          timezone: Europe/Berlin
     - package-ecosystem: npm
       directory: "/"
       reviewers:
-          - ffoodd
+          - tommycos
       labels:
           - dependencies
       schedule:
           interval: weekly
           day: monday
           time: "12:00"
-          timezone: Europe/Paris
+          timezone: Europe/Berlin
       versioning-strategy: increase
       rebase-strategy: disabled
