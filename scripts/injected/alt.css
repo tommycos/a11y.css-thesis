@@ -65,6 +65,30 @@
 	margin-inline-start: 1rem;
 }
 
+#a11ycss-reporter h2 {
+	font-size: 1rem;
+	margin-inline-start: 1rem;
+}
+
+#a11ycss-reporter h3 {
+	color: rebeccapurple;
+	font-size: 0.9rem;
+	margin-top: 0.5rem;
+}
+
+#a11ycss-reporter .modal-inner > div {
+	margin-inline-start: 1rem;
+}
+
+#a11ycss-reporter .modal-inner b {
+	color: rebeccapurple;
+}
+
+#a11ycss-reporter p {
+	font-size: 0.8rem;
+	margin-inline-start: 1rem;
+}
+
 #a11ycss-reporter ol {
 	background: #fcf9e9;
 	border: 1px solid #e5dec8;
@@ -109,6 +133,14 @@
 	inset: 0;
 	position: absolute;
 	z-index: 2;
+}
+#a11ycss-reporter .regular-link {
+	font-size: 0.8rem;
+	color:#0000EE;
+	content: normal;
+	inset: auto;
+	position: static;
+	z-index: auto;
 }
 
 #a11ycss-reporter dl {
@@ -163,4 +195,42 @@
 	padding: 0;
 	position: absolute;
 	white-space: nowrap;
+}
+
+#a11ycss-reporter .hidden{
+	display: none;
+}
+
+#a11ycss-reporter .modal{
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	padding: 2rem;
+	background-color: rgba(0,0,0,.5);
+	overflow: scroll;
+}
+
+#a11ycss-reporter .modal-background{
+	background-color: #f7f7f7;
+	background-image:
+		radial-gradient(#0000001a 15%, transparent 16%),
+		radial-gradient(#0000001a 15%, transparent 16%);
+	background-position: 0 0, .25rem .25rem;
+	background-size: .5rem .5rem;
+	color: #3e4b55;
+	font-family: system-ui, sans-serif;
+	font-size: 75%;
+	padding: 1rem;
+}
+
+#a11ycss-reporter .modal-inner{
+	background: #fcf9e9;
+	border: 1px solid #e5dec8;
+	border-radius: .25rem;
+	margin: .625rem;
+}
+
+#a11ycss-reporter .modal.open{
+	display: block;
 }
