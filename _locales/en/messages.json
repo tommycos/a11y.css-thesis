@@ -60,19 +60,25 @@
 		"message": "Other tools"
 	},
 	"scrollToImage": {
-		"message": "Scroll to image"
+		"message": "Scroll to Error"
+	},
+	"scrollTarget": {
+		"message": "Target of error scrolling"
 	},
 	"errorListHeading":{
 		"message": "List of Errors"
 	},
-	"checkAltsNumber": {
-		"message": "$number$ images",
+	"errorListTotal":{
+		"message": "Total Errors: $number$",
 		"placeholders": {
 			"number": {
 				"content": "$1",
 				"example": "6"
 			}
 		}
+	},
+	"checkAltsNumber": {
+		"message": "$1 total / $2 missing"
 	},
 	"altHeader":{
 		"message": "Alt tags"
@@ -108,7 +114,7 @@
 		"message": "Missing [type] (button)"
 	},
 	"buttonTypeErrorSource":{
-		"message": "A button that is not part of a form or has form attributes (form, formaction, formtarget) needs to have its type attribute set (Missing [type])."
+		"message": "A button that is not part of a form and doesn't have form attributes (form, formaction, formtarget) needs to have its type attribute set (Missing [type])."
 	},
 	"buttonTypeContext":{
 		"message": "Assistive technologies need enough information about components to function correctly, using the HTML button tag according to spec is one way to ensure that the buttons function is obvious. <br/> <br/> People with disabilities need assistive technologies to function correctly in order to be able to use a website the same way all other people do."

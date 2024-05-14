@@ -6,6 +6,7 @@
 	// Gets all images
 	const images = document.getElementsByTagName('img');
 	const number = images.length;
+	const missingAltNumber = document.querySelectorAll('img[alt=" "], area[alt=" "], input[type="image"][alt=" "], img:not([alt]), area:not([alt]), input[type="image"]:not([alt])').length;
 	// Declare Arrays to fill
 	const errorLists = [];
 	const errorNumbers = [];
@@ -146,11 +147,13 @@
 			modalId
 		} = errorTypeInfo;
 
-		const errorBody = `<div>
-			<h2>${errorTypeHeader}</h2>
-			<h2>${chrome.i18n.getMessage(errorTypeNumberText, String(errorTypeNumber))}</h2>
-			<button type="button" id=${errorShowButton}>Show</button>
-			<button type="button" id=${errorExplanation}>Explanation</button>
+		const errorBody = `<div class="error-body">
+			<h2 class="errorType-header">${errorTypeHeader}</h2>
+			<h2 class="errorType-number">${chrome.i18n.getMessage(errorTypeNumberText, [errorTypeNumber,missingAltNumber])}</h2>
+			<div class="errorType-buttonGroup">
+				<button class="errorType-button" type="button" id=${errorShowButton}>Show</button>
+				<button class="errorType-button" type="button" id=${errorExplanation}>Details</button>
+			</div>
 		</div>
 		`
 		const addErrorBody = document.createRange().createContextualFragment(errorBody);
@@ -200,7 +203,7 @@
 						<p>${chrome.i18n.getMessage(guideline)} <a 
 						href="${chrome.i18n.getMessage(guidelineSource)}"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						class="regular-link">
 							${chrome.i18n.getMessage(guidelineSource)}
 						</a>
@@ -208,13 +211,13 @@
 						<p>More techniques can be found here:<br/>
 						<a href="${chrome.i18n.getMessage(techniques)}"
 						target="_blank"
-						rel="noopener"
+						rel="noopener noreferrer"
 						class="regular-link">
 							${chrome.i18n.getMessage(techniques)}
 						</a></p>
 					</div>
 				</div>
-				<button 
+				<button class="errorType-button"
 				type="button" id="modalButton">Close</button>
 			</div>
 		</div>
@@ -232,10 +235,14 @@
 		const heading = document.createElement('h1');
 		heading.innerText = chrome.i18n.getMessage('errorListHeading');
 		fragment.append(heading);
+		// Show Total number of errors
+		const totalErrors = document.createElement('h2');
+		totalErrors.innerText= chrome.i18n.getMessage('errorListTotal', String(missingAltNumber + errorNumbers.reduce((total,current)=> total + current,0)));
+		fragment.append(totalErrors);
 		// Adds list that can be toggled
 		const list = document.createElement('ol');
 		list.id = 'alt-list';
-		list.classList = 'hidden'
+		list.classList = 'hidden alt-list'
 		
 		// Adds relevant infos to an object
 		const errorTypeInfo = {
@@ -266,8 +273,8 @@
 
 		// Compiles list of images to show
 		for (const image of images) {
-			const target = `a11ycss-${Math.floor(Math.random() * Date.now()).toString(36)}`;
-			const anchor = document.createRange().createContextualFragment(`<a id="${target}" style="--a11ycss-offset: ${image.height / 32}rem"></a>`);
+			const target = `a11ycssTarget-${Math.floor(Math.random() * Date.now()).toString(36)}`;
+			const anchor = document.createRange().createContextualFragment(`<a id="${target}" style="--a11ycss-offset: ${image.height / 32}rem" title="${chrome.i18n.getMessage("scrollTarget")}"></a>`);
 			image.parentNode.insertBefore(anchor, image);
 
 			let alt = '';
@@ -302,7 +309,7 @@
 
 			const figure = `<li>
 				<figure role="group">
-					<img src="${image.src}" alt="">
+					<img src="${image.src}" alt="a11ycss temporary image">
 					<figcaption style="--a11ycss-icon: url(${icon})">
 						<dl>
 							<dt><code>alt</code></dt>
@@ -333,7 +340,7 @@
 		// Adds list that can be toggled
 		const list = document.createElement('ol');
 		list.id = errorTypeInfo.listId;
-		list.classList = 'hidden';
+		list.classList = 'hidden ' + errorTypeInfo.listId;
 
 		
 		// Adds card interface for the error type
@@ -349,18 +356,16 @@
 
 			//const value = errorType.outerHTML;
 			//const code = value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-			const icon = chrome.runtime.getURL("/icons/ko.svg");
-			const target = `a11ycss-${Math.floor(Math.random() * Date.now()).toString(36)}`;
-			const anchor = document.createRange().createContextualFragment(`<a id="${target}" style="--a11ycss-offset: 2rem"></a>`);
+			//const icon = chrome.runtime.getURL("/icons/ko.svg");
+			const target = `a11ycssTarget-${Math.floor(Math.random() * Date.now()).toString(36)}`;
+			const anchor = document.createRange().createContextualFragment(`<a id="${target}" style="--a11ycss-offset: 2rem" title="${chrome.i18n.getMessage("scrollTarget")}"></a>`);
 			errorType.parentNode.insertBefore(anchor, errorType);
 
 			const figure = `<li>
-				<figure role="group">
-					<figcaption style="--a11ycss-icon: url(${icon})">
-						<dl>
-							<dt><code>Error</code></dt>
-							<dd>${errorTypeInfo.errorTypeHeader}</dd>
-						</dl>
+				<figure class="errorType-figure" role="group">
+					<figcaption>
+							<h3><code>Error:</code></h3>
+							<h4 class="errorTypeList-header">${errorTypeInfo.errorTypeHeader}</h4>
 						<p>Click to highlight</p>
 						<a href="#${target}" title="${chrome.i18n.getMessage("scrollToImage")}">
 							<span class="visually-hidden">${chrome.i18n.getMessage("scrollToImage")}</span>

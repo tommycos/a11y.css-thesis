@@ -9,7 +9,7 @@
 	}
 }
 
-.a11css-active :target[id^="a11ycss"] {
+.a11css-active :target[id^="a11ycssTarget"] {
 	display: block;
 	scroll-margin-top: calc(50vh - var(--a11ycss-offset));
 }
@@ -25,13 +25,12 @@
 	}
 }
 
-.a11css-active :target[id^="a11ycss"] + img {
+.a11css-active :target[id^="a11ycssTarget"] + * {
 	animation: .5s focus .1s ease-out 1 forwards;
-	background-color: #fff;
 	box-shadow: 0 0 10rem 10rem #fffc;
 	border-radius: .5rem;
 	position: relative;
-	z-index: 2147483647;
+	z-index: 2147483646;
 }
 
 #a11ycss-reporter {
@@ -50,7 +49,7 @@
 	padding: .5rem;
 	position: fixed;
 	inline-size: 14rem;
-	z-index: 2147483646;
+	z-index: 2147483645;
 }
 
 #a11ycss-reporter * {
@@ -94,7 +93,7 @@
 	border: 1px solid #e5dec8;
 	border-radius: .25rem;
 	list-style: none;
-	margin: 0;
+	margin: -5px 0 5px 0;
 	padding: 0;
 }
 
@@ -197,15 +196,53 @@
 	white-space: nowrap;
 }
 
-#a11ycss-reporter .hidden{
+#a11ycss-reporter .hidden {
 	display: none;
 }
+/* == Error card */
+#a11ycss-reporter .error-body {
+	border: 1px solid #3e4b55;
+	border-radius: 5px;
+	background: #fffff4;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+#a11ycss-reporter .errorType-buttonGroup {
+	display: flex;
+	margin-inline-start: 1rem;
+}
+#a11ycss-reporter .errorType-button{
+	border-radius: 4px;
+  	color: white;
+  	cursor: pointer;
+  	background: rebeccapurple;
+  	padding: 5px;
+  	border: 2px solid rebeccapurple;
+	margin: 5px;
+}
 
+#a11ycss-reporter .errorType-button:hover{
+	background: rgba(102, 51, 153, 0.6);
+}
+
+#a11ycss-reporter .errorType-figure{
+	border: 2px solid rebeccapurple;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#a11ycss-reporter .errorTypeList-header{
+	color: white;
+  	background: #d90b0b;
+  	padding: 3px;
+}
+
+/* == Modal */
 #a11ycss-reporter .modal{
 	display: none;
 	position: fixed;
 	inset: 0;
-	z-index: 10;
+	z-index: 2147483647;
 	padding: 2rem;
 	background-color: rgba(0,0,0,.5);
 	overflow: scroll;
