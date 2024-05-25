@@ -11,7 +11,7 @@
 
 .a11css-active :target[id^="a11ycssTarget"] {
 	display: block;
-	scroll-margin-top: calc(50vh - var(--a11ycss-offset));
+	scroll-margin-top: calc(50vh - 2rem);
 }
 
 @keyframes focus {
@@ -30,7 +30,7 @@
 	box-shadow: 0 0 10rem 10rem #fffc;
 	border-radius: .5rem;
 	position: relative;
-	z-index: 2147483646;
+	z-index: 2147483645;
 }
 
 #a11ycss-reporter {
@@ -110,11 +110,19 @@
 
 #a11ycss-reporter figcaption::before {
 	block-size: 1.5rem;
-	content: var(--a11ycss-icon);
 	inline-size: 1.5rem;
 	inset: -.5rem auto auto -.5rem;
 	position: absolute;
 	z-index: 1;
+}
+#a11ycss-reporter figcaption.icon-ko::before{
+	content: url(../../icons/ko.svg);
+}
+#a11ycss-reporter figcaption.icon-ok::before{
+	content: url(../../icons/ok.svg);
+}
+#a11ycss-reporter figcaption.icon-info::before{
+	content: url(../../icons/info.svg);
 }
 
 #a11ycss-reporter img {

@@ -96,26 +96,26 @@
 		guidelineSource: 'titleTagSource',
 		techniques: 'titleTagTechniques',
 	};
-	// Gets all optgroup with no label
-	// Adds relevant infos for optgroup no label and its modal
-	errorLists[4] = document.querySelectorAll('optgroup:not([label])');
+	// Gets all label with empty for attribute
+	// Adds relevant infos for empty for attriute and its modal
+	errorLists[4] = document.querySelectorAll('label[for=""],label[for=" "]');
 	errorNumbers[4] = errorLists[4].length;
 	errorInfo[4] ={
-		errorTypeHeader: chrome.i18n.getMessage('optGroupLabelHeader'),
+		errorTypeHeader: chrome.i18n.getMessage('labelForHeader'),
 		errorTypeNumber: errorNumbers[4],
-		errorTypeNumberText: 'checkOptGroupLabelsNumber',
-		errorShowButton: 'optGroupLabelMissing',
-		errorExplanation: 'optGroupLabelExplain',
-		listId: 'optGroupLabel-list',
-		modalId: 'optGroupLabelModal'
+		errorTypeNumberText: 'labelForsNumber',
+		errorShowButton: 'labelForMissing',
+		errorExplanation: 'labelForExplain',
+		listId: 'labelFor-list',
+		modalId: 'labelForModal'
 	};
 	modalContent[4] = {
-		errorSource: 'optGroupLabelErrorSource',
-		context: 'optGroupLabelContext',
-		procedure: 'optGroupLabelProcedure',
-		guideline: 'optGroupLabelGuideline',
-		guidelineSource: 'optGroupLabelSource',
-		techniques: 'optGroupLabelTechniques',
+		errorSource: 'labelForErrorSource',
+		context: 'labelForContext',
+		procedure: 'labelForProcedure',
+		guideline: 'labelForGuideline',
+		guidelineSource: 'labelForSource',
+		techniques: 'labelForTechniques',
 	};
 	// Calculate total number of errors
 	const accumulatedNumber = number + errorNumbers.reduce((total,current)=> total + current,0)
@@ -151,8 +151,8 @@
 			<h2 class="errorType-header">${errorTypeHeader}</h2>
 			<h2 class="errorType-number">${chrome.i18n.getMessage(errorTypeNumberText, [errorTypeNumber,missingAltNumber])}</h2>
 			<div class="errorType-buttonGroup">
-				<button class="errorType-button" type="button" id=${errorShowButton}>Show</button>
-				<button class="errorType-button" type="button" id=${errorExplanation}>Details</button>
+				<button class="errorType-button" type="button" id=${errorShowButton}>${chrome.i18n.getMessage("errorCardShow")}</button>
+				<button class="errorType-button" type="button" id=${errorExplanation}>${chrome.i18n.getMessage("errorCardDetails")}</button>
 			</div>
 		</div>
 		`
@@ -183,23 +183,23 @@
 				<div class="modal-inner">
 					<h1>${modalHeader}</h1>
 					<div>
-						<h3>Error Source<h3>
+						<h3>${chrome.i18n.getMessage("modalErrorSource")}<h3>
 						<p>${chrome.i18n.getMessage(errorSource)}</p>
 					</div>
 					<div>
-						<h3>Context / Importance<h3>
+						<h3>${chrome.i18n.getMessage("modalContext")}<h3>
 						<p>
 						${chrome.i18n.getMessage(context)}
 						</p>
 					</div>
 					<div>
-						<h3>Procedure / Fix<h3>
+						<h3>${chrome.i18n.getMessage("modalProcedure")}<h3>
 						<p>
 							${chrome.i18n.getMessage(procedure)}
 						</p>
 					</div>
 					<div>
-						<h3>More on the topic<h3>
+						<h3>${chrome.i18n.getMessage("modalTopic")}<h3>
 						<p>${chrome.i18n.getMessage(guideline)} <a 
 						href="${chrome.i18n.getMessage(guidelineSource)}"
 						target="_blank"
@@ -208,7 +208,7 @@
 							${chrome.i18n.getMessage(guidelineSource)}
 						</a>
 						<p/>
-						<p>More techniques can be found here:<br/>
+						<p>${chrome.i18n.getMessage("modalTechniques")}<br/>
 						<a href="${chrome.i18n.getMessage(techniques)}"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -218,7 +218,7 @@
 					</div>
 				</div>
 				<button class="errorType-button"
-				type="button" id="modalButton">Close</button>
+				type="button" id="modalButton">${chrome.i18n.getMessage("modalBtnClose")}</button>
 			</div>
 		</div>
 		`
@@ -274,7 +274,7 @@
 		// Compiles list of images to show
 		for (const image of images) {
 			const target = `a11ycssTarget-${Math.floor(Math.random() * Date.now()).toString(36)}`;
-			const anchor = document.createRange().createContextualFragment(`<a id="${target}" style="--a11ycss-offset: ${image.height / 32}rem" title="${chrome.i18n.getMessage("scrollTarget")}"></a>`);
+			const anchor = document.createRange().createContextualFragment(`<a id="${target}"  title="${chrome.i18n.getMessage("scrollTarget")}"></a>`);
 			image.parentNode.insertBefore(anchor, image);
 
 			let alt = '';
@@ -282,15 +282,15 @@
 			switch (image.getAttribute('alt')) {
 				case null:
 					alt = chrome.i18n.getMessage("altMissing");
-					icon = chrome.runtime.getURL("/icons/ko.svg");
+					icon = "icon-ko";
 					break;
 				case '':
 					alt = chrome.i18n.getMessage("altEmpty");
-					icon = chrome.runtime.getURL("/icons/info.svg");
+					icon = "icon-info";
 					break;
 				default:
 					alt = image.alt;
-					icon = chrome.runtime.getURL("/icons/ok.svg");
+					icon = "icon-ok";
 					break;
 			}
 
@@ -310,7 +310,7 @@
 			const figure = `<li>
 				<figure role="group">
 					<img src="${image.src}" alt="a11ycss temporary image">
-					<figcaption style="--a11ycss-icon: url(${icon})">
+					<figcaption class="${icon}">
 						<dl>
 							<dt><code>alt</code></dt>
 							<dd>${alt}</dd>
@@ -358,15 +358,15 @@
 			//const code = value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 			//const icon = chrome.runtime.getURL("/icons/ko.svg");
 			const target = `a11ycssTarget-${Math.floor(Math.random() * Date.now()).toString(36)}`;
-			const anchor = document.createRange().createContextualFragment(`<a id="${target}" style="--a11ycss-offset: 2rem" title="${chrome.i18n.getMessage("scrollTarget")}"></a>`);
+			const anchor = document.createRange().createContextualFragment(`<a id="${target}"  title="${chrome.i18n.getMessage("scrollTarget")}"></a>`);
 			errorType.parentNode.insertBefore(anchor, errorType);
 
 			const figure = `<li>
 				<figure class="errorType-figure" role="group">
 					<figcaption>
-							<h3><code>Error:</code></h3>
+							<h3><code>${chrome.i18n.getMessage("figureError")}</code></h3>
 							<h4 class="errorTypeList-header">${errorTypeInfo.errorTypeHeader}</h4>
-						<p>Click to highlight</p>
+						<p>${errorTypeInfo.errorShowButton ==='titleTagEmpty' ? chrome.i18n.getMessage("figureTitleTag") : chrome.i18n.getMessage("figureHighlight")}</p>
 						<a href="#${target}" title="${chrome.i18n.getMessage("scrollToImage")}">
 							<span class="visually-hidden">${chrome.i18n.getMessage("scrollToImage")}</span>
 						</a>
