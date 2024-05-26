@@ -108,6 +108,10 @@
 	inline-size: 100%;
 }
 
+#a11ycss-reporter .h2TotalErrors {
+	color: #d90b0b;
+}
+
 #a11ycss-reporter figcaption::before {
 	block-size: 1.5rem;
 	inline-size: 1.5rem;
@@ -115,14 +119,29 @@
 	position: absolute;
 	z-index: 1;
 }
-#a11ycss-reporter figcaption.icon-ko::before{
+
+#a11ycss-reporter figcaption.firefoxicon-ko::before{
 	content: url(../../icons/ko.svg);
 }
-#a11ycss-reporter figcaption.icon-ok::before{
+
+#a11ycss-reporter figcaption.firefoxicon-ok::before{
 	content: url(../../icons/ok.svg);
 }
-#a11ycss-reporter figcaption.icon-info::before{
+
+#a11ycss-reporter figcaption.firefoxicon-info::before{
 	content: url(../../icons/info.svg);
+}
+
+#a11ycss-reporter figcaption.chromeicon-ko::before{
+	content: url(chrome-extension://__MSG_@@extension_id__/icons/ko.svg);
+}
+
+#a11ycss-reporter figcaption.chromeicon-ok::before{
+	content: url(chrome-extension://__MSG_@@extension_id__/icons/ok.svg);
+}
+
+#a11ycss-reporter figcaption.chromeicon-info::before{
+	content: url(chrome-extension://__MSG_@@extension_id__/icons/info.svg);
 }
 
 #a11ycss-reporter img {

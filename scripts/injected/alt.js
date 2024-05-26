@@ -2,7 +2,7 @@
 	isFirefox = () => {
 		return typeof browser !== 'undefined';
 	}
-
+	let browserType = '';
 	// Gets all images
 	const images = document.getElementsByTagName('img');
 	const number = images.length;
@@ -123,9 +123,11 @@
 	//If there are no errors send message to disable the button
 	if ( isFirefox() ) {
 		// Firefox
+		browserType='firefox'
 		browser.runtime.sendMessage({ a11ycss_reporter: 'alt', a11ycss_reported: accumulatedNumber });
 	} else {
 		// Edge, Chrome
+		browserType='chrome'
 		if (accumulatedNumber  === 0) {
 			chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 				if (message.a11ycss_should_report && message.a11ycss_should_report === 'alt') {
@@ -238,11 +240,12 @@
 		// Show Total number of errors
 		const totalErrors = document.createElement('h2');
 		totalErrors.innerText= chrome.i18n.getMessage('errorListTotal', String(missingAltNumber + errorNumbers.reduce((total,current)=> total + current,0)));
+		totalErrors.classList = 'h2TotalErrors';
 		fragment.append(totalErrors);
 		// Adds list that can be toggled
 		const list = document.createElement('ol');
 		list.id = 'alt-list';
-		list.classList = 'hidden alt-list'
+		list.classList = 'hidden alt-list';
 		
 		// Adds relevant infos to an object
 		const errorTypeInfo = {
@@ -282,15 +285,15 @@
 			switch (image.getAttribute('alt')) {
 				case null:
 					alt = chrome.i18n.getMessage("altMissing");
-					icon = "icon-ko";
+					icon = browserType + "icon-ko";
 					break;
 				case '':
 					alt = chrome.i18n.getMessage("altEmpty");
-					icon = "icon-info";
+					icon = browserType + "icon-info";
 					break;
 				default:
 					alt = image.alt;
-					icon = "icon-ok";
+					icon = browserType + "icon-ok";
 					break;
 			}
 

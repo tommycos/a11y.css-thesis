@@ -59,6 +59,9 @@
 	"h1Others": {
 		"message": "Other tools"
 	},
+	"h2ErrorList": {
+		"message": "List of Errors"
+	},
 	"scrollToImage": {
 		"message": "Scroll to Error"
 	},
@@ -81,7 +84,7 @@
 		"message": "Show"
 	},
 	"errorCardDetails":{
-		"message": "Details"
+		"message": "How to Fix"
 	},
 	"modalErrorSource":{
 		"message": "Error Source"
