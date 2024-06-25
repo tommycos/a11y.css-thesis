@@ -1,7 +1,8 @@
-#Advancing Web Accessibility Knowledge by Utilizing a11y.css as an Educational Resource for Programmers
+# Advancing Web Accessibility Knowledge by Utilizing a11y.css as an Educational Resource for Programmers
 This is the code for a browser extension modified for the bachelor thesis with the title: Advancing Web Accessibility Knowledge by Utilizing a11y.css as an Educational Resource for Programmers, by Tomislav Cosic.
 
 The original a11y.css-webextension:
+
 [a11y.css](https://github.com/ffoodd/a11y.css/) webextension repository — for both Chromium-based browsers and Firefox.
 
 How to set-up:
